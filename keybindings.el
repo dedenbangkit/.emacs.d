@@ -15,11 +15,11 @@
 (defun modes ()
   (interactive) nil)
 
-(define-key helm-map (kbd "SPC") #'keyboard-escape-quit)
+(define-key helm-map (kbd "<escape>") #'helm-keyboard-quit)
 
 (define-key evil-normal-state-map (kbd "ff") #'helm-find-files)
 (define-key evil-normal-state-map (kbd "fb") #'helm-bookmarks)
-(define-key evil-normal-state-map (kbd "fl") #'helm-find-files)
+(define-key evil-normal-state-map (kbd "fl") #'helm-mini)
 (define-key evil-normal-state-map (kbd "fj") #'helm-buffers-list)
 (define-key evil-normal-state-map (kbd "fn") #'display-line-numbers-mode)
 (define-key evil-normal-state-map (kbd "fp") #'find-file-literally-at-point)
@@ -28,12 +28,19 @@
 (define-key evil-normal-state-map (kbd "fck") #'edit-keybindings)
 (define-key evil-normal-state-map (kbd "fci") #'edit-init-el)
 (define-key evil-normal-state-map (kbd "fcc") #'edit-custom-el)
+(define-prefix-command 'find-ag)
+(define-key evil-normal-state-map (kbd "fs") #'find-ag)
+(define-key evil-normal-state-map (kbd "fss") #'helm-do-ag)
+(define-key evil-normal-state-map (kbd "fsh") #'helm-ag-pop-stack)
+(define-key evil-normal-state-map (kbd "fsp") #'helm-ag-project-root)
+(define-key evil-normal-state-map (kbd "fsb") #'helm-ag-buffers)
+
 (define-key evil-normal-state-map (kbd "s") #'save-buffer)
 (define-key evil-normal-state-map (kbd "f SPC") #'keyboard-escape-quit)
 (define-key evil-normal-state-map (kbd "f <escape>") #'keyboard-escape-quit)
 
 ;; Open Files
-(define-key evil-normal-state-map (kbd "SPC") #'helm-mini)
+(define-key evil-normal-state-map (kbd "SPC") #'helm-ag-this-file)
 
 ;; Windows
 (define-key evil-normal-state-map (kbd "wl") #'windmove-right)

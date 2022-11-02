@@ -25,10 +25,11 @@
 (setq-default fill-column 100)
 
 ;; Remove menu
+(when (display-graphic-p)
+  (scroll-bar-mode -1))
 (tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
 (display-time-mode 1)
+(menu-bar-mode -1)
 
 ;; my-packages
 (defvar my-package-list
@@ -38,6 +39,7 @@
     yaml-mode
     dockerfile-mode
     helm
+    helm-ag
     helm-ext
     cider
     paredit
@@ -48,7 +50,8 @@
     evil
     evil-leader
     evil-collection
-    which-key))
+    which-key
+    use-package))
 
 ;; Scans the list in myPackages
 ;; install the missing packages

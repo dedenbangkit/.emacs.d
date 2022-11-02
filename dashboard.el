@@ -2,42 +2,35 @@
 ;;; Commentary: Deden Splash File --- initialization my splash for Emacs
 
 
-;;; Projectile
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
 
-(unless (package-installed-p 'projectile)
-  (package-install 'projectile))
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(use-package page-break-lines :ensure t)
+(use-package all-the-icons :ensure t)
+(use-package dashboard
+  :ensure t
+  :init
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title nil)
+  (setq dashboard-startup-banner '"/splash.txt")
+  (setq dashboard-center-content nil)
+  (setq dashboard-items '((recents  . 3)
+			  (bookmarks . 10)
+			  (projects . 5)
+			  (agenda . 5)
+			  (registers . 2)))
+  (setq dashboard-footer-messages nil)
+  :config
+  (dashboard-modify-heading-icons '((recents. "file-text")
+				    (bookmarks . "book")))
+  (dashboard-setup-startup-hook))
 
-(unless (package-installed-p 'page-break-lines)
-  (package-install 'page-break-lines))
-(require 'page-break-lines)
-(page-break-lines-mode)
-
-(unless (package-installed-p 'all-the-icons)
-  (package-install 'all-the-icons))
-(when (display-graphic-p)
-  (require 'all-the-icons))
-
-(unless (package-installed-p 'dashboard)
-  (package-install 'dashboard))
-(require 'dashboard)
-(dashboard-setup-startup-hook)
-
+;;This is for client mode
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
-(setq dashboard-set-heading-icons t)
-(setq dashboard-set-file-icons t)
-(setq dashboard-set-navigator t)
-(setq dashboard-show-shortcuts nil)
-(setq dashboard-footer-messages nil)
-(setq dashboard-startup-banner '"/Users/dedenbangkit/.emacs.d/splash/splash.txt")
-
-(setq dashboard-items '((recents  . 3)
-                        (bookmarks . 10)
-                        (projects . 5)
-                        (agenda . 5)
-                        (registers . 2)))
-
 
 ;; (setq dashboard-center-content t)
 ;; (setq dashboard-footer-messages '("Akvo Foundation"))
