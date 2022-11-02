@@ -1,0 +1,14 @@
+/.org-id-locations
+/auto-save-list
+/elpa/*
+/image-dired/
+/oauth2.plstore
+/session.*
+/tramp
+/url/
+/var/
+/transient
+projectile-bookmarks.eld
+*.elc
+ido.last
+recentf
