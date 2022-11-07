@@ -76,4 +76,16 @@
 
 (provide 'helm-fzf)
 
+(defun custom-filter-buffers (buffer-list)
+  (delq nil (mapcar
+             (lambda (buffer)
+               (cond
+                    ((eq (with-current-buffer buffer major-mode)  'dired-mode) nil)
+                    ((eq (with-current-buffer buffer major-mode)  'org-mode) nil)
+                    ((eq (with-current-buffer buffer major-mode)  'org-agenda-mode) nil)
+                    (t buffer)))
+             buffer-list)))
+
+(advice-add 'helm-skip-boring-buffers :filter-return 'custom-filter-buffers)
+
 ;;; helm-fzf.el ends here

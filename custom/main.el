@@ -2,6 +2,8 @@
 (load helm-fzf-file)
 (setq automode-file "~/.emacs.d/custom/auto-mode.el")
 (load automode-file)
+(setq lsp-file "~/.emacs.d/custom/lsp.el")
+(load lsp-file)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

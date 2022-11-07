@@ -22,14 +22,14 @@
 (setq auto-save-default nil)
 
 ;; Default column
-(setq-default fill-column 100)
+(setq-default fill-column 120)
 
 ;; Remove menu
 (when (display-graphic-p)
   (scroll-bar-mode -1))
 (tool-bar-mode -1)
 (display-time-mode 1)
-(menu-bar-mode -1)
+;; (menu-bar-mode -1)
 
 ;; my-packages
 (defvar my-package-list
@@ -46,11 +46,15 @@
     company
     doom-modeline
     flycheck
+    flycheck-package
     flycheck-clj-kondo
+    transpose-frame
     evil
     evil-leader
     evil-collection
     which-key
+    undo-fu
+    undo-fu-session
     use-package))
 
 ;; Scans the list in myPackages
@@ -63,6 +67,9 @@
 (setq evil-want-integration t)
 (setq evil-want-keybinding nil)
 (setq evil-want-C-u-scroll t)
+(require 'undo-fu)
+(setq evil-undo-system 'undo-fu)
+(global-undo-fu-session-mode)
 (require 'evil)
 (when (require 'evil-collection nil t)
   (evil-collection-init))
@@ -70,6 +77,7 @@
 (evil-mode 1)
 (require 'evil-leader)
 (global-evil-leader-mode)
+
 
 ;; Which key
 (require 'which-key)
@@ -79,9 +87,14 @@
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 
+;; Transpose Frame
+(require 'transpose-frame)
+
 ;; Search properties
-(global-company-mode)
+(global-company-mode 1)
 (global-flycheck-mode 1)
+(eval-after-load 'flycheck
+  '(flycheck-package-setup))
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
@@ -120,8 +133,11 @@
   (ANY 2)
   (context 2))
 
-;; org-mode
+;; Paredit Lisp
+(add-hook 'lisp-mode-hook 'paredit-mode)
+(add-hook 'lisp-mode-hook 'emacs-lisp-mode)
 
+;; ORG-MODE
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . nil)
