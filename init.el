@@ -44,7 +44,9 @@
     cider
     paredit
     company
+    hydra
     doom-modeline
+    magit
     flycheck
     flycheck-package
     flycheck-clj-kondo
@@ -100,7 +102,7 @@
 
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
-(load-theme 'tango-dark t)
+(load-theme 'misterioso t)
 
 ;; lein, clj-kondo, etc
 ;; (setq exec-path (append exec-path '("/usr/local/bin"))) ;;change-me

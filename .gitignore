@@ -5,11 +5,15 @@
 /oauth2.plstore
 /session.*
 /tramp
+/.cache
 /url/
 /var/
 /transient
 /undo-fu-session
+/request
+/eclipse.jdt.ls
 projectile-bookmarks.eld
 *.elc
 ido.last
 recentf
+.lsp-session-*

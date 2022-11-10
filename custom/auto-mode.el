@@ -4,17 +4,9 @@
 (setq auto-mode-alist
       (append '(("\\.el\\'" . lisp-mode)
 		("\\.py\\'" . python-mode)
+		("\\.java\\'" . java-mode)
+		("\\.js\\'" . javascript-mode)
 		("\\.org\\'" . org-mode)
 		("\\.clj\\'" . clojure-mode)
 		("\\.edn\\'" . clojure-mode))
 		auto-mode-alist))
-
-(use-package company-jedi
-  :ensure t
-  :config
-  (progn
-    (setq jedi:complete-on-dot t
-          jedi:use-shortcuts t)
-    (defun user/python-mode-hook ()
-      (add-to-list 'company-backends 'company-jedi))
-    (add-hook 'python-mode-hook 'user/python-mode-hook)))

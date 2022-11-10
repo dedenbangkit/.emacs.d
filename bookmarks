@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("emacs-init"
+(("emacs-lsp-config"
+ (filename . "~/.emacs.d/custom/lsp.el")
+ (front-context-string . ";; Main LSP Conf")
+ (rear-context-string)
+ (position . 1))
+("emacs-init"
  (filename . "~/.emacs.d/init.el")
  (front-context-string . ";;; init.el --- ")
  (rear-context-string)

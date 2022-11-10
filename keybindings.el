@@ -46,6 +46,9 @@
 ;; Indentation
 (define-key evil-visual-state-map (kbd "SPC") #'indent-region)
 
+;; Magit
+(define-key evil-normal-state-map (kbd "M") #'magit)
+
 ;; Open Files
 (define-key evil-normal-state-map (kbd "SPC") #'helm-ag-this-file)
 
