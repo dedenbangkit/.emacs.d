@@ -1,5 +1,5 @@
 ;;; keybindings.el --- Initialization keybindings for Emacs
-;;; Commentary:
+;;; Commentary
 ;;; Code:
 
 (defvar which-key-idle-delay 0.01)
@@ -35,7 +35,7 @@
 (define-key evil-normal-state-map (kbd "fb") #'helm-bookmarks)
 (define-key evil-normal-state-map (kbd "fl") #'helm-mini)
 (define-key evil-normal-state-map (kbd "fj") #'helm-buffers-list)
-(define-key evil-normal-state-map (kbd "fn") #'global-display-line-numbers-mode)
+(define-key evil-normal-state-map (kbd "fn") #'global-linum-mode)
 (define-key evil-normal-state-map (kbd "fp") 'find-file-literally-at-point)
 (define-prefix-command 'edit-my-config)
 (define-key evil-normal-state-map (kbd "fc") #'edit-my-config)
@@ -95,19 +95,17 @@
 
 ;; Lisp
 (add-hook
- 'lisp-mode-hook
+ 'emacs-lisp-mode-hook
  #'(lambda ()
-     (display-line-numbers-mode)
+     (linum-mode 1)
      (define-key evil-normal-state-map (kbd "eb") 'eval-buffer)
      (define-key evil-normal-state-map (kbd "eb") 'eval-buffer)))
-'lisp-mode-hook
-
 
 ;; Clojure Cider
 (add-hook
  'clojure-mode-hook
  #'(lambda ()
-     (display-line-numbers-mode)
+     (linum-mode 1)
      (define-key evil-normal-state-map (kbd "ec") 'cider-connect)
      (define-key evil-normal-state-map (kbd "eb") 'cider-eval-buffer)
      (define-key evil-normal-state-map (kbd "ee") 'cider-eval-list-at-point)
@@ -133,7 +131,7 @@
  'python-mode-hook
  #'(lambda ()
      '(jedi-mode)
-     (display-line-numbers-mode)
+     (linum-mode 1)
      (define-key evil-normal-state-map (kbd "ef") 'lsp-goto-type-definition)
      (define-key evil-normal-state-map (kbd "ej") 'jedi:goto-definition)
      (define-key evil-normal-state-map (kbd "ee") 'elpy-yapf-fix-code)

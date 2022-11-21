@@ -1,11 +1,17 @@
 ;;; main.el --- custom loads
-;;; Comentary:
-(setq helm-fzf-file "~/.emacs.d/custom/helm-fzf.el")
-(load helm-fzf-file)
-(setq automode-file "~/.emacs.d/custom/auto-mode.el")
-(load automode-file)
-(setq lsp-file "~/.emacs.d/custom/lsp.el")
-(load lsp-file)
+;;; Commentary:
+;;; Code:
+
+(load "~/.emacs.d/custom/helm-fzf.el")
+(load "~/.emacs.d/custom/auto-mode.el")
+(load "~/.emacs.d/custom/lsp.el")
+
+;;Linum Highlight
+(load "~/.emacs.d/custom/linum-highlight.el")
+(require 'linum-highlight-current-line-number)
+(setq linum-format 'linum-highlight-current-line-number)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,3 +43,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;; main.el ends here
