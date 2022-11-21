@@ -1,5 +1,6 @@
-;; This buffer is for text that is not saved, and for Lisp evaluation.
-;; To create a file, visit it with C-x C-f and enter text in its buffer.
+;;; auto-mode.el --- auto-mode list
+;;; Commentary:
+;;; To create a file, visit it with C-x C-f and enter text in its buffer.
 
 (setq auto-mode-alist
       (append '(("\\.el\\'" . lisp-mode)
@@ -10,3 +11,5 @@
 		("\\.clj\\'" . clojure-mode)
 		("\\.edn\\'" . clojure-mode))
 		auto-mode-alist))
+
+;;; auto-mode.el ends here

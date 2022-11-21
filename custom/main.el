@@ -1,3 +1,5 @@
+;;; main.el --- custom loads
+;;; Comentary:
 (setq helm-fzf-file "~/.emacs.d/custom/helm-fzf.el")
 (load helm-fzf-file)
 (setq automode-file "~/.emacs.d/custom/auto-mode.el")
@@ -9,6 +11,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(flycheck-python-flake8-executable "python3")
+ '(flycheck-python-pycompile-executable "python3")
+ '(flycheck-python-pylint-executable "python3")
  '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
    '(## dockerfile-mode json-mode all-the-icons page-break-lines projectile helm dashboard flycheck-clojure flycheck-clj-kondo flycheck company paredit cider clojure-mode zenburn-theme use-package evil))

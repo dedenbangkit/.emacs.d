@@ -12,6 +12,7 @@
 /undo-fu-session
 /request
 /eclipse.jdt.ls
+/elpy
 projectile-bookmarks.eld
 *.elc
 ido.last

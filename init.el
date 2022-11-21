@@ -1,6 +1,7 @@
 ;;; init.el --- Initialization file for my emacs
-;;; Commentary: Deden Startup File --- initialization file for Emacs
+;;; Commentary:
 
+;;; Code:
 (require 'package)
 
 ;; add to list
@@ -34,7 +35,6 @@
 ;; my-packages
 (defvar my-package-list
   '(clojure-mode
-    python-mode
     json-mode
     yaml-mode
     dockerfile-mode
@@ -45,9 +45,9 @@
     paredit
     company
     hydra
-    doom-modeline
     magit
     flycheck
+    flycheck-color-mode-line
     flycheck-package
     flycheck-clj-kondo
     transpose-frame
@@ -57,6 +57,8 @@
     which-key
     undo-fu
     undo-fu-session
+    powerline
+    simpleclip ;; copy paste
     use-package))
 
 ;; Scans the list in myPackages
@@ -65,12 +67,16 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; Enable Powerline
+(require 'powerline)
+(powerline-center-evil-theme)
+
 ;; Enable Evil
-(setq evil-want-integration t)
-(setq evil-want-keybinding nil)
-(setq evil-want-C-u-scroll t)
+(setq-default evil-want-integration t)
+(setq-default evil-want-keybinding nil)
+(setq-default evil-want-C-u-scroll t)
 (require 'undo-fu)
-(setq evil-undo-system 'undo-fu)
+(setq-default evil-undo-system 'undo-fu)
 (global-undo-fu-session-mode)
 (require 'evil)
 (when (require 'evil-collection nil t)
@@ -86,8 +92,8 @@
 (which-key-mode)
 
 ;; Doom Mode Line
-(require 'doom-modeline)
-(doom-modeline-mode 1)
+;; (require 'doom-modeline)
+;; (doom-modeline-mode 1)
 
 ;; Transpose Frame
 (require 'transpose-frame)
@@ -100,6 +106,10 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
+(require 'flycheck-color-mode-line)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+
 (add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (load-theme 'misterioso t)
@@ -109,17 +119,17 @@
 
 ;; CIDER
 (add-hook 'clojure-mode-hook 'paredit-mode)
-(setq cider-prompt-save-file-on-load 'always-save)
+(setq-default cider-prompt-save-file-on-load 'always-save)
 (add-hook 'cider-repl-mode-hook #'company-mode)
 (add-hook 'cider-mode-hook #'company-mode)
 (add-hook 'cider-repl-mode-hook #'paredit-mode)
 (add-hook 'cider-mode-hook #'eldoc-mode)
-(setq cider-save-file-on-load t)
-(setq cider-repl-display-help-banner nil)
+(setq-default cider-save-file-on-load t)
+(setq-default cider-repl-display-help-banner nil)
 
 ;; ido
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
+(setq-default ido-enable-flex-matching t)
+(setq-default ido-everywhere t)
 (ido-mode 1)
 
 ;; Compojure
@@ -161,8 +171,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(flycheck-python-flake8-executable "python3")
+ '(flycheck-python-pycompile-executable "python3")
+ '(flycheck-python-pylint-executable "python3")
+ '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   '(dashboard flycheck-clojure flycheck-clj-kondo flycheck company paredit cider clojure-mode zenburn-theme use-package evil))
+   '(## dockerfile-mode json-mode all-the-icons page-break-lines projectile helm dashboard flycheck-clojure flycheck-clj-kondo flycheck company paredit cider clojure-mode zenburn-theme use-package evil))
  '(safe-local-variable-values
    '((eval customize-set-variable 'cider-path-translations
 	   (let
@@ -197,12 +211,12 @@
         (push buf other-buffers)))
     (nreverse (append dired-buffers other-buffers))))
 
-(setq custom-file "~/.emacs.d/custom/main.el")
-(load custom-file)
-(setq keybindings-file "~/.emacs.d/keybindings.el")
-(load keybindings-file)
-(setq dashboard-file "~/.emacs.d/dashboard.el")
-(load dashboard-file)
+(load "~/.emacs.d/custom/main.el")
+(load "~/.emacs.d/keybindings.el")
+(load "~/.emacs.d/dashboard.el")
 
 (set-frame-parameter
         nil 'title (format-mode-line mode-line-format))
+
+
+;;; init.el ends here
