@@ -59,6 +59,7 @@
     undo-fu-session
     powerline
     simpleclip ;; copy paste
+    org-bullets
     use-package))
 
 ;; Scans the list in myPackages
@@ -161,6 +162,12 @@
 (eval-after-load "org"
   '(require 'ox-md nil t))
 (require 'org-tempo)
+(require 'org-bullets)
+(add-hook
+ 'org-mode-hook
+ (lambda ()
+   (org-bullets-mode 1)
+   (org-indent-mode 1)))
 
 (setq org-confirm-babel-evaluate nil)
 
