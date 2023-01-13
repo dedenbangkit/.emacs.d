@@ -13,6 +13,7 @@
 /request
 /eclipse.jdt.ls
 /elpy
+/eln-cache
 projectile-bookmarks.eld
 *.elc
 ido.last

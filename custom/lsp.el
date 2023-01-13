@@ -5,8 +5,8 @@
 
 (add-to-list 'load-path (expand-file-name "lib/lsp-mode" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lib/lsp-mode/clients" user-emacs-directory))
-(setenv "JAVA_HOME"  "/Users/dedenbangkit/Library/Java/JavaVirtualMachines/openjdk-16.0.1/Contents/Home/")
-(defvar lsp-java-java-path "/Users/dedenbangkit/Library/Java/JavaVirtualMachines/openjdk-16.0.1/Contents/Home/bin/java")
+(setenv "JAVA_HOME"  "/usr/lib/jvm/java-19-openjdk-amd64")
+(defvar lsp-java-java-path "/usr/lib/jvm/java-19-openjdk-amd64/bin/java")
 
 (use-package lsp-mode
   :init (setq lsp-keymap-prefix "C-l")

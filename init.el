@@ -57,7 +57,6 @@
     which-key
     undo-fu
     undo-fu-session
-    powerline
     simpleclip ;; copy paste
     org-bullets
     use-package))
@@ -67,10 +66,6 @@
 (dolist (package my-package-list)
   (unless (package-installed-p package)
     (package-install package)))
-
-;; Enable Powerline
-(require 'powerline)
-(powerline-center-evil-theme)
 
 ;; Enable Evil
 (setq-default evil-want-integration t)
