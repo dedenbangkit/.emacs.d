@@ -56,6 +56,10 @@
 ;; Indentation
 (define-key evil-visual-state-map (kbd "SPC") #'indent-region)
 
+;; Simple Clip
+(define-key evil-visual-state-map (kbd "Y") #'simpleclip-copy)
+(define-key evil-normal-state-map (kbd "P") #'simpleclip-paste)
+
 ;; Magit
 (define-key evil-normal-state-map (kbd "M") #'magit)
 
@@ -122,6 +126,8 @@
  'org-mode-hook
  #'(lambda ()
      (define-key evil-normal-state-map (kbd "L") 'org-cycle)
+     (define-key evil-normal-state-map (kbd "R") 'org-export-dispatch)
+     (define-key evil-normal-state-map (kbd ">") 'org-table-wrap-region)
      (define-key evil-normal-state-map (kbd "+") 'org-toggle-checkbox)
      (define-key evil-normal-state-map (kbd "RET") 'org-babel-execute-src-block)
      (define-key evil-normal-state-map (kbd "#") 'org-insert-structure-template)))
@@ -140,3 +146,6 @@
 ;; (evil-ex-define-cmd "q[uit]" nil)
 
 ;;; keybindings.el ends here
+
+;; custom patch
+(fset 'evil-visual-update-x-selection 'ignore)

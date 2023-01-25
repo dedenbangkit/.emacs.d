@@ -82,7 +82,6 @@
 (require 'evil-leader)
 (global-evil-leader-mode)
 
-
 ;; Which key
 (require 'which-key)
 (which-key-mode)
@@ -200,8 +199,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; custom files
-
 ;; sort dired buffer
 (defun sort-dired-buffers (buffers)
   "Sort BUFFERS by moving all Dired buffers to the end."
@@ -219,6 +216,5 @@
 
 (set-frame-parameter
         nil 'title (format-mode-line mode-line-format))
-
 
 ;;; init.el ends here

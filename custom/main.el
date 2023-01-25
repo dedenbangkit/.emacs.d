@@ -11,6 +11,17 @@
 (require 'linum-highlight-current-line-number)
 (setq linum-format 'linum-highlight-current-line-number)
 
+;;Simple Clip
+(load "~/.emacs.d/custom/simpleclip.el")
+(require 'simpleclip)
+(simpleclip-mode 1)
+
+;;Org Reveal
+(load "~/.emacs.d/custom/ox-reveal.el")
+(require 'ox-reveal)
+(setq org-reveal-root "file:///home/dedenbangkit/.emacs.d/custom/reveal.js")
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
