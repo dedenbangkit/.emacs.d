@@ -35,8 +35,8 @@
   :ensure t
   :defer t
   :config
-	(setq org-gcal-client-id "208811384495-4mp3cilrb7q7i2psu1qbofmmi7peqm89.apps.googleusercontent.com"
-				org-gcal-client-secret "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"
+	(setq org-gcal-client-id (getenv "GCAL_CLIENT_ID")
+				org-gcal-client-secret (getenv "GCAL_SECRET")
 				org-gcal-fetch-file-alist '(("deden@akvo.org" .  "~/Orgs/gcal.org")))
   (org-gcal-reload-client-id-secret)
   (setq plstore-cache-passphrase-for-symmetric-encryption t)
