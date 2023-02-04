@@ -1,12 +1,35 @@
 ;;; init.el --- Initialization file for my emacs
-;;; Commentary:
+;;; Commnetary:
 
 ;;; Code:
 (require 'package)
 
 ;; add to list
+;; (add-to-list 'package-archives
+;; 	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
-	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+	     '("melpa" . "https://melpa.org/packages/") t)
+
+;; Remove vertical border character "|"
+;; Reverse colors for the border to have nicer line
+
+(set-face-inverse-video-p 'vertical-border nil)
+(set-face-background 'vertical-border (face-background 'default))
+
+;; Set symbol for the border
+(set-display-table-slot standard-display-table
+                        'vertical-border
+                        (make-glyph-code ?┃))
+
+;; fonts
+(set-frame-font
+ "JetBrainsMono Nerd Font 10" nil t)
+(add-to-list 'default-frame-alist
+	     '(font . "JetBrainsmono Nerd Font 10"))
+(set-face-attribute
+ 'default t
+ :font "JetBrainsmono Nerd Font 10")
+
 
 ;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
@@ -59,6 +82,12 @@
     undo-fu-session
     simpleclip ;; copy paste
     org-bullets
+		request
+		request-deferred
+		aio
+		persist ;; for org gcal
+    neotree
+    treemacs
     use-package))
 
 ;; Scans the list in myPackages
@@ -153,6 +182,11 @@
    (sql . t)
    (sqlite . t)))
 
+;; ORG-AGENDA
+(setq org-agenda-files
+      '("/home/dedenbangkit/Orgs/gcal.org"
+	"/home/dedenbangkit/Orgs/agenda.org"))
+
 (eval-after-load "org"
   '(require 'ox-md nil t))
 (require 'org-tempo)
@@ -216,5 +250,22 @@
 
 (set-frame-parameter
         nil 'title (format-mode-line mode-line-format))
+
+;; Transparent Background
+(defun toggle-transparency ()
+  "Toggle transparency."
+   (interactive)
+   (let ((alpha (frame-parameter nil 'alpha)))
+     (set-frame-parameter
+      nil 'alpha
+      (if (eql (cond ((numberp alpha) alpha)
+                     ((numberp (cdr alpha)) (cdr alpha))
+                     ;; Also handle undocumented (<active> <inactive>) form.
+                     ((numberp (cadr alpha)) (cadr alpha)))
+               100)
+          '(95 . 50) '(100 . 100)))))
+(global-set-key (kbd "C-c t") 'toggle-transparency)
+(set-frame-parameter (selected-frame) 'alpha '(95 . 50))
+(add-to-list 'default-frame-alist '(alpha . (95 . 50)))
 
 ;;; init.el ends here

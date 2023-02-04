@@ -1,37 +1,44 @@
-;;; splash.el --- Initialization my splash for Emacs
-;;; Commentary: Deden Splash File --- initialization my splash for Emacs
-
+;;; dashboard.el --- Initialization my splash for Emacs
+;;; Commentary:
+;;; Code:
 
 (use-package projectile
   :ensure t
   :config
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
+;; Projectile Ends here
 
 (use-package page-break-lines :ensure t)
 (use-package all-the-icons :ensure t)
 (use-package dashboard
   :ensure t
   :init
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-banner-logo-title nil)
-  (setq dashboard-startup-banner '"/splash.txt")
-  (setq dashboard-center-content nil)
-  (setq dashboard-items '((recents  . 3)
-			  (bookmarks . 10)
-			  (projects . 5)
-			  (agenda . 5)
-			  (registers . 2)))
-  (setq dashboard-footer-messages nil)
   :config
-  (dashboard-modify-heading-icons '((recents. "file-text")
-				    (bookmarks . "book")))
   (dashboard-setup-startup-hook))
+
+(setq dashboard-week-agenda t)
+(setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)
+(setq dashboard-item-names '(("Recent Files:" . "Recently opened files:")
+			     ("Agenda for today:" . "Today's agenda:")
+			     ("Agenda for the coming week:" . "Agenda:")))
+(setq dashboard-items '((recents  . 5)
+			(bookmarks . 5)
+			(projects . 5)
+			(agenda . 10)))
+(setq dashboard-set-navigator nil)
+(setq dashboard-set-file-icons t)
+(setq dashboard-set-init-info t)
+(setq dashboard-banner-logo-title nil)
+(setq dashboard-startup-banner '"/home/dedenbangkit/Pictures/Logo/akvo-icon.png")
+(setq dashboard-center-content nil)
+(setq dashboard-footer-messages nil)
 
 ;;This is for client mode
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
 ;; (setq dashboard-center-content t)
 ;; (setq dashboard-footer-messages '("Akvo Foundation"))
-;; (provide 'init-startup)
+(provide 'init-startup)
+
+;;; dashboard.el ends here

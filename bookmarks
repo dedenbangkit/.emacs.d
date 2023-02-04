@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("emacs-custom-load"
+(("org-capture-last-stored"
+ (filename . "~/.notes")
+ (front-context-string . "** TODO \n  [2023")
+ (rear-context-string)
+ (position . 9))
+("emacs-custom-load"
  (filename . "~/.emacs.d/custom/main.el")
  (front-context-string)
  (rear-context-string . "'t work right.\n ")
@@ -17,14 +22,24 @@
  (front-context-string . ";;; init.el --- ")
  (rear-context-string)
  (position . 1))
-("akvo-flow-api"
- (filename . "~/Repos/akvorepos/akvo-flow-api/")
- (front-context-string . "..\n  -rw-r--r--@")
- (rear-context-string . "16 Oct 26 12:50 ")
- (position . 219))
 ("emacs-keybinding"
  (filename . "~/.emacs.d/keybindings.el")
  (front-context-string . "(define-key evil")
  (rear-context-string . "b\" #'bookmarks)\n")
  (position . 651))
+("emacs-bookmark"
+ (filename . "~/.emacs.d/bookmarks")
+ (front-context-string . ";;; Bookmarks")
+ (rear-context-string)
+ (position . 1))
+("emacs-agenda"
+ (filename . "~/Orgs/agenda.org")
+ (front-context-string . ";;; Agenda")
+ (rear-context-string)
+ (position . 1))
+("emacs-dashboard"
+ (filename . "~/.emacs.d/dashboard.el")
+ (front-context-string . ";;; Dashboard")
+ (rear-context-string)
+ (position . 1))
 )

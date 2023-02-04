@@ -16,10 +16,44 @@
 (require 'simpleclip)
 (simpleclip-mode 1)
 
+;;Org to RST
+(load "~/.emacs.d/custom/ox-rst.el")
+(require 'ox-rst)
+
+;;Command Log Mode
+(load "~/.emacs.d/custom/command-log-mode.el")
+(require 'command-log-mode)
+(add-hook 'LaTeX-mode-hook 'command-log-mode)
+
 ;;Org Reveal
 (load "~/.emacs.d/custom/ox-reveal.el")
 (require 'ox-reveal)
 (setq org-reveal-root "file:///home/dedenbangkit/.emacs.d/custom/reveal.js")
+
+;; Org Gcal
+(use-package org-gcal
+  :ensure t
+  :defer t
+  :config
+	(setq org-gcal-client-id "208811384495-4mp3cilrb7q7i2psu1qbofmmi7peqm89.apps.googleusercontent.com"
+				org-gcal-client-secret "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"
+				org-gcal-fetch-file-alist '(("deden@akvo.org" .  "~/Orgs/gcal.org")))
+  (org-gcal-reload-client-id-secret)
+  (setq plstore-cache-passphrase-for-symmetric-encryption t)
+  (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync) ))
+  (add-hook 'org-save-all-org-buffers (lambda () (org-gcal-sync) ))
+  (add-hook 'org-agenda-mode-hook (lambda () (org-gcal--sync-unlock)) 100) )
+
+;; All the Icons
+(when (display-graphic-p)
+  (require 'all-the-icons))
+;; or
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+;; Neotree
+(setq neo-theme 'icons)
+(setq neo-windo-width 55)
 
 
 (custom-set-variables

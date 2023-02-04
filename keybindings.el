@@ -31,6 +31,7 @@
 (define-key helm-map (kbd "%") 'helm-ext-ff-execute-horizontal-split)
 (define-key helm-map (kbd "|") 'helm-ext-ff-execute-vertical-split)
 
+;; Quick View
 (define-key evil-normal-state-map (kbd "ff") #'helm-find-files)
 (define-key evil-normal-state-map (kbd "fb") #'helm-bookmarks)
 (define-key evil-normal-state-map (kbd "fl") #'helm-mini)
@@ -48,6 +49,7 @@
 (define-key evil-normal-state-map (kbd "fsh") #'helm-ag-pop-stack)
 (define-key evil-normal-state-map (kbd "fsp") #'helm-ag-project-root)
 (define-key evil-normal-state-map (kbd "fsb") #'helm-ag-buffers)
+(define-key evil-normal-state-map (kbd "fa") #'org-agenda-list)
 
 (define-key evil-normal-state-map (kbd "s") #'save-buffer)
 (define-key evil-normal-state-map (kbd "f SPC") #'keyboard-escape-quit)
@@ -70,6 +72,18 @@
 (define-key evil-normal-state-map (kbd "(")  'evil-previous-open-paren)
 (define-key evil-normal-state-map (kbd ")")  'evil-next-close-paren)
 
+;; Neotree
+(setq neo-smart-open t)
+(define-key evil-normal-state-map (kbd "C-n") #'neotree-toggle)
+(evil-define-key 'normal neotree-mode-map (kbd "I") #'neotree-hidden-file-toggle)
+(evil-define-key 'normal neotree-mode-map (kbd "L") #'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "R") #'neotree-refresh)
+(evil-define-key 'normal neotree-mode-map (kbd "ma") #'neotree-create-node)
+(evil-define-key 'normal neotree-mode-map (kbd "mx") #'neotree-rename-node)
+(evil-define-key 'normal neotree-mode-map (kbd "mc") #'neotree-copy-node)
+(evil-define-key 'normal neotree-mode-map (kbd "md") #'neotree-delete-node)
+(evil-define-key 'normal neotree-mode-map (kbd "i") #'neotree-hidden-file-toggle)
+
 ;; Windows
 (define-key evil-normal-state-map (kbd "wl") #'windmove-right)
 (define-key evil-normal-state-map (kbd "wh") #'windmove-left)
@@ -79,6 +93,8 @@
 (define-key evil-normal-state-map (kbd "ww") #'transpose-frame)
 (define-key evil-normal-state-map (kbd "wH") #'flop-frame)
 (define-key evil-normal-state-map (kbd "wJ") #'flip-frame)
+(define-key evil-normal-state-map (kbd "wc") #'global-command-log-mode)
+(define-key evil-normal-state-map (kbd "w SPC") #'clm/toggle-command-log-buffer)
 (define-key evil-normal-state-map (kbd "w+") 'evil-window-increase-height)
 (define-key evil-normal-state-map (kbd "w-") 'evil-window-decrease-height)
 (define-key evil-normal-state-map (kbd "w(") 'evil-window-increase-width)
@@ -125,6 +141,7 @@
 (add-hook
  'org-mode-hook
  #'(lambda ()
+     (define-key evil-normal-state-map (kbd "fe") 'org-table-export)
      (define-key evil-normal-state-map (kbd "L") 'org-cycle)
      (define-key evil-normal-state-map (kbd "R") 'org-export-dispatch)
      (define-key evil-normal-state-map (kbd ">") 'org-table-wrap-region)
@@ -145,7 +162,7 @@
 
 ;; (evil-ex-define-cmd "q[uit]" nil)
 
-;;; keybindings.el ends here
-
 ;; custom patch
 (fset 'evil-visual-update-x-selection 'ignore)
+
+;;; keybindings.el ends here
